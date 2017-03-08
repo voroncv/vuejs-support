@@ -43,7 +43,7 @@ export default {
     },
     computed: {
     ...mapGetters({
-      allTickets: 'allTickets',
+      allTickets: 'allTickets'
     })
   }
   }

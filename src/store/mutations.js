@@ -5,21 +5,33 @@ export default {
 		selectItem(state, payload) {
 			state.selectItem = []
       		state.selectItem.push(payload.item)
-      		payload.item.newForSupport = payload.support
-      		payload.item.newForClient = payload.client
+      		const tickets = state.tickets.find(tickets => {
+      			return tickets == payload.item
+      		})
+      		tickets.newForSupport = payload.support
+      		tickets.newForClient = payload.client
 		},
 		newMessageSupport(state, payload) {
-			payload.item.messages.push({ author: 'support', text: payload.text })
-      		payload.item.status = 'process'
-      		payload.item.newForClient = true
+			const tickets = state.tickets.find(tickets => {
+      			return tickets == payload.item
+      		})
+			tickets.messages.push({ author: 'support', text: payload.text })
+      		tickets.status = 'process'
+      		tickets.newForClient = true
 		},
 		newMessageUser(state, payload) {
-			payload.item.messages.push({ author: 'client', text: payload.text })
-      		payload.item.status = 'open'
-      		payload.item.newForSupport = true
+			const tickets = state.tickets.find(tickets => {
+      			return tickets == payload.item
+      		})
+			tickets.messages.push({ author: 'client', text: payload.text })
+      		tickets.status = 'open'
+      		tickets.newForSupport = true
 		},
 		complete(state, item) {
-      		item.status = 'complete'
+			const tickets = state.tickets.find(tickets => {
+      			return tickets == item
+      		})
+      		tickets.status = 'complete'
 		},
 		newTicket(state, payload) {
 			state.tickets.push({

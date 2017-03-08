@@ -79,9 +79,9 @@ export default {
 
 .badge {
   width: 10px;
-    height: 10px;
-    background-color: #5cb85c;
-    padding: 0;
+  height: 10px;
+  background-color: #5cb85c;
+  padding: 0;
 }
 
 textarea {
